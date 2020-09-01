@@ -1,0 +1,46 @@
+{
+  "name": "muviibox",
+  "version": "1.0.0",
+  "description": "This is an application/api for users to keep a list of movies and possibly rate these movies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint \"src/**/*.js\"",
+    "lint:fix": "eslint --fix \"src/**/*.js\"",
+    "build": "babel src --out-dir dist --delete-dir-on-start --ignore '**/*.test.js'",
+    "dev": "cross-env DEBUG=log NODE_ENV=development nodemon --exec babel-node ./src/server.js",
+    "start": "cross-env DEBUG=log NODE_ENV=production node ./dist/server.js"
+  },
+  "keywords": [
+    "movies",
+    "bento.africa",
+    "movie",
+    "box",
+    "list"
+  ],
+  "author": "Oscar Ekeyekwu <oscarekeyekwu@gmail.com> (https://github.com/oscar-ekeyekwu)",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "http": "0.0.1-security",
+    "mongoose": "^5.10.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.5",
+    "@babel/core": "^7.11.5",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.5",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.1",
+    "supertest": "^4.0.2"
+  }
+}
