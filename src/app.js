@@ -1,9 +1,12 @@
 import express from "express";
+import layout from "express-layout";
+import path from "path";
 import cors from "cors";
 import CustomError from "./utils/customError";
 import errorHandler from "./utils/errorHandler";
 import { userRouter } from "./routes";
 import { connectDB } from "./db/database";
+import sessionManagement from "./services/sessionManagement";
 
 // create express app
 const app = express();
@@ -11,16 +14,29 @@ const app = express();
 //connect to DB
 connectDB();
 
-// set up CORS
-app.use(cors());
+//middlewares
+const middleware = [
+  cors(),
+  layout(),
+  express.static(path.join(__dirname, "public")),
+  express.json(),
+  express.urlencoded({ extended: true }),
+];
 
-// include middleware to enable json body parsing and nested objects
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// set up include middleware
+app.use(middleware);
+
+// configure user session
+sessionManagement.config(app);
+
+//set views
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
 //base route
 app.get("/", (req, res) => {
-  res.send("Hello");
+  console.log(req);
+  res.send(req.originalUrl);
 });
 // docuementation routes
 // app.use("/api/docs", docRouter);

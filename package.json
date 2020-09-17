@@ -21,13 +21,20 @@
   "author": "Oscar Ekeyekwu <oscarekeyekwu@gmail.com> (https://github.com/oscar-ekeyekwu)",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "express-layout": "^0.1.0",
+    "express-session": "^1.17.1",
     "express-validator": "^6.6.1",
     "http": "0.0.1-security",
-    "mongoose": "^5.10.2"
+    "mongoose": "^5.10.2",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.5",
