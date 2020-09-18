@@ -5,7 +5,7 @@ import { google } from "googleapis";
  */
 export default class GoogleService {
   authenticate() {
-    this._socialCallbackUrl = `${process.env.HOST}api/users/social/googlecallback`;
+    this._socialCallbackUrl = `${process.env.HOST}welcome`;
     this._clientID = process.env.GOOGLE_CLIENT_ID;
     this._clientSecret = process.env.GOOGLE_CLIENT_SECRET;
     this._initializeOAuth2Client();

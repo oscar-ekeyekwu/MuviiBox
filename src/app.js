@@ -35,8 +35,12 @@ app.set("view engine", "ejs");
 
 //base route
 app.get("/", (req, res) => {
-  console.log(req);
   res.send(req.originalUrl);
+});
+
+//welcome callback route
+app.get("/welcome", (req, res) => {
+  res.send({ message: "Authenticated" });
 });
 // docuementation routes
 // app.use("/api/docs", docRouter);
