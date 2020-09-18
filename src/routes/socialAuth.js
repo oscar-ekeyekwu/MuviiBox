@@ -8,7 +8,7 @@ const socialAuthRouter = express.Router();
  */
 socialAuthRouter.get("/google", socialAuthController.googleAuthController);
 socialAuthRouter.get(
-  "/google/callback",
+  "/googlecallback",
   socialAuthController.googleAuthCallbackController
 );
 

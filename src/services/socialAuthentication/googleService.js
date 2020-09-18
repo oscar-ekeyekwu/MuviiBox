@@ -17,7 +17,7 @@ export default class GoogleService {
     this.oauth2Client = new google.auth.OAuth2(
       this._clientID,
       this._clientSecret,
-      `${process.env.HOST}api/users/social/google/callback`
+      `${process.env.HOST}api/users/social/googlecallback`
     );
   }
 

@@ -1,6 +1,6 @@
 import GoogleService from "../services/socialAuthentication/googleService";
 import { InternalServerError } from "../utils/customError";
-import responseHandler from "../utils/responseHandler";
+// import responseHandler from "../utils/responseHandler";
 import url from "url";
 
 class SocialAuthController {
@@ -14,7 +14,8 @@ class SocialAuthController {
       googleService.authenticate(req.provider, req.socialCallback);
       const authenticationUrl = googleService.getAuthenticationUrl();
 
-      responseHandler(res, 200, { authenticationUrl });
+      // responseHandler(res, 200, { authenticationUrl });
+      res.redirect(authenticationUrl);
     } catch (error) {
       next(new InternalServerError(error));
     }
