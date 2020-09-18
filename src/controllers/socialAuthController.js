@@ -11,7 +11,7 @@ class SocialAuthController {
   async googleAuthController(req, res, next) {
     try {
       const googleService = new GoogleService();
-      googleService.authenticate(req.provider, req.socialCallback);
+      googleService.authenticate();
       const authenticationUrl = googleService.getAuthenticationUrl();
 
       // responseHandler(res, 200, { authenticationUrl });
@@ -48,7 +48,6 @@ class SocialAuthController {
             isVerified: profile.isVerified,
             firstname: profile.firstname,
             lastname: profile.lastname,
-            username: profile.username,
             email: profile.email,
             photo: profile.photo,
           },

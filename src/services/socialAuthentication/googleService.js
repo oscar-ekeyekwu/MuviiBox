@@ -4,8 +4,8 @@ import { google } from "googleapis";
  * This service is responsible for managing the OAuth Client for Google authentication.
  */
 export default class GoogleService {
-  authenticate(socialCallbackUrl) {
-    this._socialCallbackUrl = socialCallbackUrl;
+  authenticate() {
+    this._socialCallbackUrl = `${process.env.HOST}api/users/social/googlecallback`;
     this._clientID = process.env.GOOGLE_CLIENT_ID;
     this._clientSecret = process.env.GOOGLE_CLIENT_SECRET;
     this._initializeOAuth2Client();
@@ -46,7 +46,7 @@ export default class GoogleService {
       // If you only need one scope you can pass it as a string
       scope: this._getScopes(),
 
-      // Add the client ID to ensure the correnct credentials are used on server response (callback)
+      // Add the client ID to ensure the correct credentials are used on server response (callback)
       state: this._clientID,
     });
   }
