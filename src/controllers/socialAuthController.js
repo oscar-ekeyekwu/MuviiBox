@@ -1,7 +1,8 @@
 import GoogleService from "../services/socialAuthentication/googleService";
-import { InternalServerError } from "../utils/customError";
+import { InternalServerError, CustomError } from "../utils/customError";
 // import responseHandler from "../utils/responseHandler";
 import url from "url";
+import Users from "../models/users";
 
 class SocialAuthController {
   /**
@@ -58,7 +59,34 @@ class SocialAuthController {
           query: { success: false },
         });
       }
+      const authDetails = {
+        provider: "google",
+        profileImageUrl: profile.photo,
+      };
 
+      //save authenticated user in application database
+      try {
+        const user = new Users({
+          firstname: profile.firstname,
+          lastname: profile.lastname,
+          email: profile.email,
+          auth: authDetails,
+        });
+        await user.save();
+      } catch (error) {
+        const errorType =
+          error.code === 11000
+            ? ": User account already exists"
+            : `\n Error: ${error.message}`;
+
+        next(
+          new CustomError(
+            400,
+            `An error occured creating user account.  ${errorType}`
+          )
+        );
+        return;
+      }
       res.redirect(redirectUrl);
     } catch (error) {
       next(new InternalServerError(error));

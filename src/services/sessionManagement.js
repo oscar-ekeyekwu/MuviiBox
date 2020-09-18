@@ -48,7 +48,7 @@ class SessionManagement {
       try {
         const sess = await sessionStore.get(req.session.id);
         if (!sess) {
-          next(new CustomError(400, "Invalid Session, try login again"));
+          next(new CustomError(400, "Session timeout, try login again ..."));
           return;
         }
       } catch (error) {

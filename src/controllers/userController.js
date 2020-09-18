@@ -32,7 +32,6 @@ class UserController {
 
       await newUser.save();
     } catch (error) {
-      console.log(error.message);
       const errorType =
         error.code === 11000
           ? ": User account already exists"
