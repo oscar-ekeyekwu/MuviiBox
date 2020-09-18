@@ -1,4 +1,4 @@
-import app from ".";
+import app from "./app";
 const http = require("http");
 const log = require("debug")("log");
 require("dotenv").config();

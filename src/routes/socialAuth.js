@@ -1,11 +1,15 @@
 import express from "express";
 import socialAuthController from "../controllers/socialAuthController";
 
-const socailAuthRouter = express.Router();
+const socialAuthRouter = express.Router();
 
 /**
  * Authenticate with Google
  */
-socailAuthRouter.get("/google");
+socialAuthRouter.get("/google", socialAuthController.googleAuthController);
+socialAuthRouter.get(
+  "/google/callback",
+  socialAuthController.googleAuthCallbackController
+);
 
-export default socailAuthRouter;
+export default socialAuthRouter;
